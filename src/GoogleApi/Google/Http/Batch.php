@@ -167,8 +167,7 @@ EOF;
 
           try {
               $response = Google_Http_REST::decodeHttpResponse($response, $requests[$i-1]);
-          }
-          catch (Google_Service_Exception $e) {
+          } catch (Google_Service_Exception $e) {
             // Store the exception as the response, so successful responses
             // can be processed.
             $response = $e;

@@ -431,8 +431,8 @@ class Google_Task_RunnerTest extends BaseTest
   public function customLimitsProvider()
   {
     return array(
-        array(Google_Task_Runner::TASK_RETRY_NEVER),
-        array(Google_Task_Runner::TASK_RETRY_ONCE),
+        array(\GoogleApi\Google_Task_Runner::TASK_RETRY_NEVER),
+        array(\GoogleApi\Google_Task_Runner::TASK_RETRY_ONCE),
     );
   }
 

@@ -45,11 +45,11 @@ class Google_Http_REST
       $retryMap = null
   ) {
       $runner = new Google_Task_Runner(
-        $config,
-        sprintf('%s %s', $request->getMethod(), (string) $request->getUri()),
-        array(get_class(), 'doExecute'),
-        array($client, $request, $expectedClass)
-    );
+          $config,
+          sprintf('%s %s', $request->getMethod(), (string) $request->getUri()),
+          array(get_class(), 'doExecute'),
+          array($client, $request, $expectedClass)
+      );
 
     if (!is_null($retryMap)) {
       $runner->setRetryMap($retryMap);

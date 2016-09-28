@@ -212,12 +212,12 @@ class Google_Client
   {
     if (!$this->isUsingApplicationDefaultCredentials()) {
         throw new \DomainException(
-          'set the JSON service account credentials using'
-          . ' Google_Client::setAuthConfig or set the path to your JSON file'
-          . ' with the "GOOGLE_APPLICATION_CREDENTIALS" environment variable'
-          . ' and call Google_Client::useApplicationDefaultCredentials to'
-          . ' refresh a token with assertion.'
-      );
+            'set the JSON service account credentials using'
+            . ' Google_Client::setAuthConfig or set the path to your JSON file'
+            . ' with the "GOOGLE_APPLICATION_CREDENTIALS" environment variable'
+            . ' and call Google_Client::useApplicationDefaultCredentials to'
+            . ' refresh a token with assertion.'
+        );
     }
 
     $this->getLogger()->log(
@@ -258,8 +258,8 @@ class Google_Client
     if (is_null($refreshToken)) {
       if (!isset($this->token['refresh_token'])) {
           throw new \LogicException(
-            'refresh token must be passed in or set as part of setAccessToken'
-        );
+              'refresh token must be passed in or set as part of setAccessToken'
+          );
       }
       $refreshToken = $this->token['refresh_token'];
     }
@@ -477,15 +477,15 @@ class Google_Client
   public function getAuth()
   {
       throw new \BadMethodCallException(
-        'This function no longer exists. See UPGRADING.md for more information'
-    );
+          'This function no longer exists. See UPGRADING.md for more information'
+      );
   }
 
   public function setAuth($auth)
   {
       throw new \BadMethodCallException(
-        'This function no longer exists. See UPGRADING.md for more information'
-    );
+          'This function no longer exists. See UPGRADING.md for more information'
+      );
   }
 
   /**
@@ -693,8 +693,8 @@ class Google_Client
       $token = $this->getAccessToken();
       if (!isset($token['id_token'])) {
           throw new \LogicException(
-            'id_token must be passed in or set as part of setAccessToken'
-        );
+              'id_token must be passed in or set as part of setAccessToken'
+          );
       }
       $idToken = $token['id_token'];
     }
