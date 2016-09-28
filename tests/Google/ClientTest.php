@@ -239,7 +239,7 @@ class Google_ClientTest extends BaseTest
 
 
     $client->setHttpClient($http);
-    $dr_service = new Google_Service_Drive($client);
+    $dr_service = new \GoogleApiServices\Google_Service_Drive($client);
     $this->assertInstanceOf('\GoogleApi\Google_Model', $dr_service->files->listFiles());
   }
 

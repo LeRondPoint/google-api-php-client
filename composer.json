@@ -7,14 +7,14 @@
     "license": "Apache-2.0",
     "repositories": [
       {
-        "type": "vcs",
+        "type": "git",
         "url": "https://github.com/LeRondPoint/google-api-php-client-services.git"
       }
     ],
     "require": {
         "php": ">=5.4",
         "google/auth": "0.10",
-        "google/ns-apiclient-services": "dev@master",
+        "google/ns-apiclient-services": "dev-master",
         "firebase/php-jwt": "~2.0|~3.0",
         "monolog/monolog": "^1.17",
         "phpseclib/phpseclib": "~2.0",

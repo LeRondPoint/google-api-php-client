@@ -56,11 +56,11 @@ class Google_ModelTest extends BaseTest
   public function testIntentionalNulls()
   {
     $data = json_decode($this->calendarData, true);
-    $event = new Google_Service_Calendar_Event($data);
+    $event = new \GoogleApiServices\Google_Service_Calendar_Event($data);
     $obj = json_decode(json_encode($event->toSimpleObject()), true);
     $this->assertArrayHasKey('date', $obj['start']);
     $this->assertArrayNotHasKey('dateTime', $obj['start']);
-    $date = new Google_Service_Calendar_EventDateTime();
+    $date = new \GoogleApiServices\Google_Service_Calendar_EventDateTime();
     $date->setDate(\GoogleApi\Google_Model::NULL_VALUE);
     $event->setStart($date);
     $obj = json_decode(json_encode($event->toSimpleObject()), true);
@@ -71,8 +71,8 @@ class Google_ModelTest extends BaseTest
   public function testModelMutation()
   {
     $data = json_decode($this->calendarData, true);
-    $event = new Google_Service_Calendar_Event($data);
-    $date = new Google_Service_Calendar_EventDateTime();
+    $event = new \GoogleApiServices\Google_Service_Calendar_Event($data);
+    $date = new \GoogleApiServices\Google_Service_Calendar_EventDateTime();
     date_default_timezone_set('UTC');
     $dateString = Date("c");
     $summary = "hello";
@@ -85,14 +85,14 @@ class Google_ModelTest extends BaseTest
     $this->assertEquals($dateString, $simpleEvent->end->date);
     $this->assertEquals($summary, $simpleEvent->summary);
 
-    $event2 = new Google_Service_Calendar_Event();
+    $event2 = new \GoogleApiServices\Google_Service_Calendar_Event();
     $this->assertNull($event2->getStart());
   }
 
   public function testVariantTypes()
   {
-    $file = new Google_Service_Drive_DriveFile();
-    $metadata = new Google_Service_Drive_DriveFileImageMediaMetadata();
+    $file = new \GoogleApiServices\Google_Service_Drive_DriveFile();
+    $metadata = new \GoogleApiServices\Google_Service_Drive_DriveFileImageMediaMetadata();
     $metadata->setCameraMake('Pokémon Snap');
     $file->setImageMediaMetadata($metadata);
     $data = json_decode(json_encode($file->toSimpleObject()), true);
@@ -101,7 +101,7 @@ class Google_ModelTest extends BaseTest
 
   public function testOddMappingNames()
   {
-    $creative = new Google_Service_AdExchangeBuyer_Creative();
+    $creative = new \GoogleApiServices\Google_Service_AdExchangeBuyer_Creative();
     $creative->setAccountId('12345');
     $creative->setBuyerCreativeId('12345');
     $creative->setAdvertiserName('Hi');
@@ -176,7 +176,7 @@ class Google_ModelTest extends BaseTest
          }',
         true
     );
-    $collection = new Google_Service_Calendar_Events($data);
+    $collection = new \GoogleApiServices\Google_Service_Calendar_Events($data);
     $this->assertEquals(4, count($collection));
     $count = 0;
     foreach ($collection as $col) {

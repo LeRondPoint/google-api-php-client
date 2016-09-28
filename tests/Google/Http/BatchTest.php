@@ -45,7 +45,7 @@ class Google_Http_BatchTest extends BaseTest
   {
     $client = $this->getClient();
     $batch = new \GoogleApi\Google_Http_Batch($client);
-    $plus = new Google_Service_Plus($client);
+    $plus = new \GoogleApiServices\Google_Service_Plus($client);
 
     $client->setUseBatch(true);
     $batch->add($plus->people->get('+LarryPage'), 'key1');
@@ -87,7 +87,7 @@ class Google_Http_BatchTest extends BaseTest
   {
     $client = $this->getClient();
     $batch = new \GoogleApi\Google_Http_Batch($client);
-    $plus = new Google_Service_Plus($client);
+    $plus = new \GoogleApiServices\Google_Service_Plus($client);
 
     $client->setUseBatch(true);
     $batch->add($plus->people->get('123456789987654321'), 'key1');
@@ -104,7 +104,7 @@ class Google_Http_BatchTest extends BaseTest
   public function testMediaFileBatch()
   {
     $client = $this->getClient();
-    $storage = new Google_Service_Storage($client);
+    $storage = new \GoogleApiServices\Google_Service_Storage($client);
     $bucket = 'testbucket';
     $stream = Psr7\stream_for("testbucket-text");
     $params = [
@@ -113,7 +113,7 @@ class Google_Http_BatchTest extends BaseTest
     ];
 
     // Metadata object for new Google Cloud Storage object
-    $obj = new Google_Service_Storage_StorageObject();
+    $obj = new \GoogleApiServices\Google_Service_Storage_StorageObject();
     $obj->contentType = "text/plain";
 
     // Batch Upload
