@@ -117,11 +117,11 @@ class Google_AccessToken_Verify
         }
 
         return (array) $payload;
-      } catch (ExpiredException $e) {
+      } catch (\ExpiredException $e) {
         return false;
       } catch (ExpiredExceptionV3 $e) {
         return false;
-      } catch (DomainException $e) {
+      } catch (\DomainException $e) {
         // continue
       }
     }

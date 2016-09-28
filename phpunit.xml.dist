@@ -13,7 +13,7 @@
     </testsuites>
     <filter>
         <whitelist>
-            <directory suffix=".php">./src/Google</directory>
+            <directory suffix=".php">./src/GoogleApi/Google</directory>
         </whitelist>
     </filter>
 </phpunit>
