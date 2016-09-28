@@ -96,7 +96,7 @@ class Google_Http_BatchTest extends BaseTest
     $result = $batch->execute();
     $this->assertTrue(isset($result['response-key2']));
     $this->assertInstanceOf(
-        'Google_Service_Exception',
+        '\GoogleApi\Google_Service_Exception',
         $result['response-key1']
     );
   }

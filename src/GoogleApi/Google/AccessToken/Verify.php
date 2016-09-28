@@ -81,7 +81,7 @@ class Google_AccessToken_Verify
   public function verifyIdToken($idToken, $audience = null)
   {
     if (empty($idToken)) {
-      throw new LogicException('id_token cannot be null');
+      throw new \LogicException('id_token cannot be null');
     }
 
     // set phpseclib constants if applicable
@@ -193,7 +193,7 @@ class Google_AccessToken_Verify
     }
 
     if (!isset($certs['keys'])) {
-      throw new InvalidArgumentException(
+      throw new \InvalidArgumentException(
           'federated sign-on certs expects "keys" to be set'
       );
     }
