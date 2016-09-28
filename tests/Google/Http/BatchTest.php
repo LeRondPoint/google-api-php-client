@@ -27,7 +27,7 @@ class Google_Http_BatchTest extends BaseTest
     $this->checkToken();
 
     $client = $this->getClient();
-    $batch = new Google_Http_Batch($client);
+    $batch = new \GoogleApi\Google_Http_Batch($client);
     $plus = new Google_Service_Plus($client);
 
     $client->setUseBatch(true);
@@ -44,7 +44,7 @@ class Google_Http_BatchTest extends BaseTest
   public function testBatchRequest()
   {
     $client = $this->getClient();
-    $batch = new Google_Http_Batch($client);
+    $batch = new \GoogleApi\Google_Http_Batch($client);
     $plus = new Google_Service_Plus($client);
 
     $client->setUseBatch(true);
@@ -63,7 +63,7 @@ class Google_Http_BatchTest extends BaseTest
     $this->checkToken();
 
     $client = $this->getClient();
-    $batch = new Google_Http_Batch($client);
+    $batch = new \GoogleApi\Google_Http_Batch($client);
     $shortener = new Google_Service_Urlshortener($client);
     $url1 = new Google_Service_Urlshortener_Url;
     $url2 = new Google_Service_Urlshortener_Url;
@@ -86,7 +86,7 @@ class Google_Http_BatchTest extends BaseTest
   public function testInvalidBatchRequest()
   {
     $client = $this->getClient();
-    $batch = new Google_Http_Batch($client);
+    $batch = new \GoogleApi\Google_Http_Batch($client);
     $plus = new Google_Service_Plus($client);
 
     $client->setUseBatch(true);

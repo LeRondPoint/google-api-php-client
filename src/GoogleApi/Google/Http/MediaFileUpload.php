@@ -1,4 +1,4 @@
-<?php
+<?php namespace GoogleApi;
 /**
  * Copyright 2012 Google Inc.
  *
@@ -153,7 +153,7 @@ class Google_Http_MediaFileUpload
   * Sends a PUT-Request to google drive and parses the response,
   * setting the appropiate variables from the response()
   *
-  * @param Google_Http_Request $httpRequest the Reuqest which will be send
+     * @param Google_Http_Request $httpRequest the Reuqest which will be send
   *
   * @return false|mixed false when the upload is unfinished or the decoded http response
   *

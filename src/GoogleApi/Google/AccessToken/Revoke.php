@@ -1,4 +1,4 @@
-<?php
+<?php namespace GoogleApi;
 
 /*
  * Copyright 2008 Google Inc.

@@ -35,7 +35,7 @@ if (!$oauth_credentials = getOAuthCredentialsFile()) {
  ************************************************/
 $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 
-$client = new Google_Client();
+$client = new \GoogleApi\Google_Client();
 $client->setAuthConfig($oauth_credentials);
 $client->setRedirectUri($redirect_uri);
 $client->setScopes('email');

@@ -32,7 +32,7 @@ echo pageHeader("Batching Queries");
   setDeveloperKey, the request may still succeed
   using the anonymous quota.
  ************************************************/
-$client = new Google_Client();
+$client = new \GoogleApi\Google_Client();
 $client->setApplicationName("Client_Library_Examples");
 
 // Warn if the API key isn't set.
@@ -58,7 +58,7 @@ $client->setUseBatch(true);
  want to execute with keys of our choice - these
  keys will be reflected in the returned array.
 ************************************************/
-$batch = new Google_Http_Batch($client);
+$batch = new \GoogleApi\Google_Http_Batch($client);
 $optParams = array('filter' => 'free-ebooks');
 $req1 = $service->volumes->listVolumes('Henry David Thoreau', $optParams);
 $batch->add($req1, "thoreau");

@@ -28,7 +28,7 @@ class Google_Http_MediaFileUploadTest extends BaseTest
   {
     $client = $this->getClient();
     $request = new Request('POST', 'http://www.example.com');
-    $media = new Google_Http_MediaFileUpload(
+    $media = new \GoogleApi\Google_Http_MediaFileUpload(
         $client,
         $request,
         'image/png',
@@ -46,15 +46,15 @@ class Google_Http_MediaFileUploadTest extends BaseTest
     $request = new Request('POST', 'http://www.example.com');
 
     // Test resumable upload
-    $media = new Google_Http_MediaFileUpload($client, $request, 'image/png', 'a', true);
+    $media = new \GoogleApi\Google_Http_MediaFileUpload($client, $request, 'image/png', 'a', true);
     $this->assertEquals('resumable', $media->getUploadType(null));
 
     // Test data *only* uploads
-    $media = new Google_Http_MediaFileUpload($client, $request, 'image/png', 'a', false);
+    $media = new \GoogleApi\Google_Http_MediaFileUpload($client, $request, 'image/png', 'a', false);
     $this->assertEquals('media', $media->getUploadType(null));
 
     // Test multipart uploads
-    $media = new Google_Http_MediaFileUpload($client, $request, 'image/png', 'a', false);
+    $media = new \GoogleApi\Google_Http_MediaFileUpload($client, $request, 'image/png', 'a', false);
     $this->assertEquals('multipart', $media->getUploadType(array('a' => 'b')));
   }
 
@@ -65,7 +65,7 @@ class Google_Http_MediaFileUploadTest extends BaseTest
 
     // Test data *only* uploads.
     $request = new Request('POST', 'http://www.example.com');
-    $media = new Google_Http_MediaFileUpload($client, $request, 'image/png', $data, false);
+    $media = new \GoogleApi\Google_Http_MediaFileUpload($client, $request, 'image/png', $data, false);
     $request = $media->getRequest();
     $this->assertEquals($data, (string) $request->getBody());
 
@@ -73,7 +73,7 @@ class Google_Http_MediaFileUploadTest extends BaseTest
     $request = new Request('POST', 'http://www.example.com');
     $reqData = json_encode("hello");
     $request = $request->withBody(Psr7\stream_for($reqData));
-    $media = new Google_Http_MediaFileUpload($client, $request, 'image/png', $data, true);
+    $media = new \GoogleApi\Google_Http_MediaFileUpload($client, $request, 'image/png', $data, true);
     $request = $media->getRequest();
     $this->assertEquals(json_decode($reqData), (string) $request->getBody());
 
@@ -81,7 +81,7 @@ class Google_Http_MediaFileUploadTest extends BaseTest
     $request = new Request('POST', 'http://www.example.com');
     $reqData = json_encode("hello");
     $request = $request->withBody(Psr7\stream_for($reqData));
-    $media = new Google_Http_MediaFileUpload($client, $request, 'image/png', $data, false);
+    $media = new \GoogleApi\Google_Http_MediaFileUpload($client, $request, 'image/png', $data, false);
     $request = $media->getRequest();
     $this->assertContains($reqData, (string) $request->getBody());
     $this->assertContains(base64_encode($data), (string) $request->getBody());
@@ -103,7 +103,7 @@ class Google_Http_MediaFileUploadTest extends BaseTest
     $request = $service->files->create($file);
 
     // Create a media file upload to represent our upload process.
-    $media = new Google_Http_MediaFileUpload(
+    $media = new \GoogleApi\Google_Http_MediaFileUpload(
       $client,
       $request,
       'text/plain',
@@ -144,7 +144,7 @@ class Google_Http_MediaFileUploadTest extends BaseTest
     $request = $service->files->create($file);
 
     // Create a media file upload to represent our upload process.
-    $media = new Google_Http_MediaFileUpload(
+    $media = new \GoogleApi\Google_Http_MediaFileUpload(
       $client,
       $request,
       'text/plain',
@@ -182,7 +182,7 @@ class Google_Http_MediaFileUploadTest extends BaseTest
     $request = $service->files->create($file);
 
     // Create a media file upload to represent our upload process.
-    $media = new Google_Http_MediaFileUpload(
+    $media = new \GoogleApi\Google_Http_MediaFileUpload(
       $client,
       $request,
       'text/plain',

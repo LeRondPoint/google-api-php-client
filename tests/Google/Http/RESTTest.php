@@ -28,7 +28,7 @@ class Google_HTTP_RESTTest extends BaseTest
 
   public function setUp()
   {
-    $this->rest = new Google_Http_REST();
+    $this->rest = new \GoogleApi\Google_Http_REST();
     $this->request = new Request('GET', '/');
   }
 
@@ -63,14 +63,14 @@ class Google_HTTP_RESTTest extends BaseTest
   }
 
 
-  /** @expectedException Google_Service_Exception */
+  /** @expectedException \GoogleApi\Google_Service_Exception */
   public function testDecode500ResponseThrowsException()
   {
     $response = new Response(500);
     $this->rest->decodeHttpResponse($response, $this->request);
   }
 
-  /** @expectedException Google_Service_Exception */
+  /** @expectedException \GoogleApi\Google_Service_Exception */
   public function testExceptionResponse()
   {
     $http = new GuzzleHttp\Client();
@@ -88,7 +88,7 @@ class Google_HTTP_RESTTest extends BaseTest
   }
 
   /**
-   * @expectedException Google_Service_Exception
+   * @expectedException \GoogleApi\Google_Service_Exception
    */
   public function testBadErrorFormatting()
   {
@@ -105,7 +105,7 @@ class Google_HTTP_RESTTest extends BaseTest
   }
 
   /**
-   * @expectedException Google_Service_Exception
+   * @expectedException \GoogleApi\Google_Service_Exception
    */
   public function tesProperErrorFormatting()
   {
@@ -130,7 +130,7 @@ class Google_HTTP_RESTTest extends BaseTest
   }
 
   /**
-   * @expectedException Google_Service_Exception
+   * @expectedException \GoogleApi\Google_Service_Exception
    */
   public function testNotJson404Error()
   {

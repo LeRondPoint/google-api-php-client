@@ -1,4 +1,4 @@
-<?php
+<?php namespace GoogleApi;
 /*
  * Copyright 2012 Google Inc.
  *
@@ -39,10 +39,10 @@ class Google_Http_Batch
   /** @var array service requests to be executed. */
   private $requests = array();
 
-  /** @var Google_Client */
+    /** @var Google_Client */
   private $client;
 
-  public function __construct(Google_Client $client)
+  public function __construct(\GoogleApi\Google_Client $client)
   {
     $this->client = $client;
     $this->boundary = mt_rand();
@@ -166,8 +166,9 @@ EOF;
           }
 
           try {
-            $response = Google_Http_REST::decodeHttpResponse($response, $requests[$i-1]);
-          } catch (Google_Service_Exception $e) {
+              $response = Google_Http_REST::decodeHttpResponse($response, $requests[$i-1]);
+          }
+          catch (Google_Service_Exception $e) {
             // Store the exception as the response, so successful responses
             // can be processed.
             $response = $e;

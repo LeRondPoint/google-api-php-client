@@ -27,10 +27,10 @@
     },
     "autoload": {
         "psr-0": {
-            "Google_": "src/"
+            "GoogleApi\\": "src/"
         },
         "classmap": [
-            "src/Google/Service/"
+            "src/GoogleApi/Google/Service/"
         ]
     },
     "extra": {

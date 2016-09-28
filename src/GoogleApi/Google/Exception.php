@@ -1,4 +1,4 @@
-<?php
+<?php namespace GoogleApi;
 /*
  * Copyright 2013 Google Inc.
  *
@@ -15,6 +15,6 @@
  * limitations under the License.
  */
 
-class Google_Exception extends Exception
+class Google_Exception extends \Exception
 {
 }

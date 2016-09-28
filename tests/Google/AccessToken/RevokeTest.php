@@ -74,12 +74,12 @@ class Google_AccessToken_RevokeTest extends BaseTest
     );
 
     // Test with access token.
-    $revoke = new Google_AccessToken_Revoke($http);
+    $revoke = new \GoogleApi\Google_AccessToken_Revoke($http);
     $this->assertTrue($revoke->revokeToken($t));
     $this->assertEquals($accessToken, $token);
 
     // Test with refresh token.
-    $revoke = new Google_AccessToken_Revoke($http);
+    $revoke = new \GoogleApi\Google_AccessToken_Revoke($http);
     $t = array(
       'access_token' => $accessToken,
       'refresh_token' => $refreshToken,
@@ -90,7 +90,7 @@ class Google_AccessToken_RevokeTest extends BaseTest
     $this->assertEquals($refreshToken, $token);
 
     // Test with token string.
-    $revoke = new Google_AccessToken_Revoke($http);
+    $revoke = new \GoogleApi\Google_AccessToken_Revoke($http);
     $t = $accessToken;
     $this->assertTrue($revoke->revokeToken($t));
     $this->assertEquals($accessToken, $token);

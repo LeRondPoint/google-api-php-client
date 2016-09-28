@@ -23,9 +23,9 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Stream;
 
-class Test_Google_Service extends Google_Service
+class Test_Google_Service extends \GoogleApi\Google_Service
 {
-  public function __construct(Google_Client $client)
+    public function __construct(\GoogleApi\Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = "https://test.example.com";
@@ -55,7 +55,7 @@ class Google_Service_ResourceTest extends BaseTest
 
   public function setUp()
   {
-    $this->client = $this->getMockBuilder("Google_Client")
+      $this->client = $this->getMockBuilder("\GoogleApi\Google_Client")
           ->disableOriginalConstructor()
           ->getMock();
     $this->logger = $this->getMockBuilder("Monolog\Logger")
@@ -75,7 +75,7 @@ class Google_Service_ResourceTest extends BaseTest
 
   public function testCallFailure()
   {
-    $resource = new Google_Service_Resource(
+      $resource = new \GoogleApi\Google_Service_Resource(
       $this->service,
       "test",
       "testResource",
@@ -90,7 +90,7 @@ class Google_Service_ResourceTest extends BaseTest
       )
     );
     $this->setExpectedException(
-        "Google_Exception",
+        "\GoogleApi\Google_Exception",
         "Unknown function: test->testResource->someothermethod()"
     );
     $resource->call("someothermethod", array());
@@ -98,7 +98,7 @@ class Google_Service_ResourceTest extends BaseTest
 
   public function testCall()
   {
-    $resource = new Google_Service_Resource(
+      $resource = new \GoogleApi\Google_Service_Resource(
       $this->service,
       "test",
       "testResource",
@@ -120,7 +120,7 @@ class Google_Service_ResourceTest extends BaseTest
   public function testCallServiceDefinedRoot()
   {
     $this->service->rootUrl = "https://sample.example.com";
-    $resource = new Google_Service_Resource(
+    $resource = new \GoogleApi\Google_Service_Resource(
       $this->service,
       "test",
       "testResource",
@@ -142,9 +142,9 @@ class Google_Service_ResourceTest extends BaseTest
   public function testCreateRequestUri()
   {
     $restPath = "/plus/{u}";
-    $service = new Google_Service($this->client);
+    $service = new \GoogleApi\Google_Service($this->client);
     $service->servicePath = "http://localhost";
-    $resource = new Google_Service_Resource($service, 'test', 'testResource', array());
+    $resource = new \GoogleApi\Google_Service_Resource($service, 'test', 'testResource', array());
 
     // Test Path
     $params = array();
@@ -204,12 +204,12 @@ class Google_Service_ResourceTest extends BaseTest
         ->will($this->returnValue(new GuzzleHttp\Message\Request('GET', '/?alt=media')));
     }
 
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setHttpClient($http);
     $service = new Test_Google_Service($client);
 
     // set up mock objects
-    $resource = new Google_Service_Resource(
+    $resource = new \GoogleApi\Google_Service_Resource(
       $service,
       "test",
       "testResource",
@@ -251,12 +251,12 @@ class Google_Service_ResourceTest extends BaseTest
         ->will($this->returnValue(new GuzzleHttp\Message\Request('GET', '/?alt=media')));
     }
 
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setHttpClient($http);
     $service = new Test_Google_Service($client);
 
     // set up mock objects
-    $resource = new Google_Service_Resource(
+    $resource = new \GoogleApi\Google_Service_Resource(
       $service,
       "test",
       "testResource",
@@ -275,7 +275,8 @@ class Google_Service_ResourceTest extends BaseTest
       $expectedClass = 'ThisShouldBeIgnored';
       $decoded = $resource->call('testMethod', $arguments, $expectedClass);
       $this->fail('should have thrown exception');
-    } catch (Google_Service_Exception $e) {
+    }
+    catch (\GoogleApi\Google_Service_Exception $e) {
       // Alt Media on error should return a safe error
       $this->assertEquals('thisisnotvalidjson', $e->getMessage());
     }
@@ -302,12 +303,12 @@ class Google_Service_ResourceTest extends BaseTest
         ->will($this->returnValue(new GuzzleHttp\Message\Request('GET', '/?alt=media')));
     }
 
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setHttpClient($http);
     $service = new Test_Google_Service($client);
 
     // set up mock objects
-    $resource = new Google_Service_Resource(
+    $resource = new \GoogleApi\Google_Service_Resource(
       $service,
       "test",
       "testResource",
@@ -326,7 +327,8 @@ class Google_Service_ResourceTest extends BaseTest
       $expectedClass = 'ThisShouldBeIgnored';
       $decoded = $resource->call('testMethod', $arguments, $expectedClass);
       $this->fail('should have thrown exception');
-    } catch (Google_Service_Exception $e) {
+    }
+    catch (\GoogleApi\Google_Service_Exception $e) {
       // empty message - alt=media means no message
       $this->assertEquals('this will be pulled into memory', $e->getMessage());
     }
@@ -354,12 +356,12 @@ class Google_Service_ResourceTest extends BaseTest
         ->will($this->returnValue(new GuzzleHttp\Message\Request('GET', '/?alt=media')));
     }
 
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setHttpClient($http);
     $service = new Test_Google_Service($client);
 
     // set up mock objects
-    $resource = new Google_Service_Resource(
+    $resource = new \GoogleApi\Google_Service_Resource(
       $service,
       "test",
       "testResource",
@@ -408,12 +410,12 @@ class Google_Service_ResourceTest extends BaseTest
         ->will($this->returnValue(new GuzzleHttp\Message\Request('GET', '/?alt=media')));
     }
 
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setHttpClient($http);
     $service = new Test_Google_Service($client);
 
     // set up mock objects
-    $resource = new Google_Service_Resource(
+    $resource = new \GoogleApi\Google_Service_Resource(
       $service,
       "test",
       "testResource",
@@ -432,7 +434,8 @@ class Google_Service_ResourceTest extends BaseTest
 
       $decoded = $resource->call('testMethod', array(array()));
       $this->fail('should have thrown exception');
-    } catch (Google_Service_Exception $e) {
+    }
+    catch (\GoogleApi\Google_Service_Exception $e) {
       $this->assertEquals($errors, $e->getErrors());
     }
   }

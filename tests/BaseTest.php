@@ -62,7 +62,7 @@ class BaseTest extends PHPUnit_Framework_TestCase
 
     $httpClient = new GuzzleHttp\Client($options);
 
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setApplicationName('google-api-php-client-tests');
     $client->setHttpClient($httpClient);
     $client->setScopes([
@@ -111,7 +111,7 @@ class BaseTest extends PHPUnit_Framework_TestCase
     return true;
   }
 
-  public function tryToGetAnAccessToken(Google_Client $client)
+  public function tryToGetAnAccessToken(\GoogleApi\Google_Client $client)
   {
     $this->checkClientCredentials();
 

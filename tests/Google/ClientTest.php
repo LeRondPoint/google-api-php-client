@@ -26,7 +26,7 @@ class Google_ClientTest extends BaseTest
 {
   public function testClientConstructor()
   {
-    $this->assertInstanceOf('Google_Client', $this->getClient());
+      $this->assertInstanceOf('\GoogleApi\Google_Client', $this->getClient());
   }
 
   public function testSignAppKey()
@@ -171,7 +171,7 @@ class Google_ClientTest extends BaseTest
 
   public function testPrepareNoScopes()
   {
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
 
     $scopes = $client->prepareScopes();
     $this->assertEquals(null, $scopes);
@@ -179,14 +179,14 @@ class Google_ClientTest extends BaseTest
 
   public function testNoAuthIsNull()
   {
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
 
     $this->assertNull($client->getAccessToken());
   }
 
   public function testPrepareService()
   {
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setScopes(array("scope1", "scope2"));
     $scopes = $client->prepareScopes();
     $this->assertEquals("scope1 scope2", $scopes);
@@ -240,12 +240,12 @@ class Google_ClientTest extends BaseTest
 
     $client->setHttpClient($http);
     $dr_service = new Google_Service_Drive($client);
-    $this->assertInstanceOf('Google_Model', $dr_service->files->listFiles());
+    $this->assertInstanceOf('\GoogleApi\Google_Model', $dr_service->files->listFiles());
   }
 
   public function testDefaultLogger()
   {
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $logger = $client->getLogger();
     $this->assertInstanceOf('Monolog\Logger', $logger);
     $handler = $logger->popHandler();
@@ -255,7 +255,7 @@ class Google_ClientTest extends BaseTest
   public function testDefaultLoggerAppEngine()
   {
     $_SERVER['SERVER_SOFTWARE'] = 'Google App Engine';
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $logger = $client->getLogger();
     $handler = $logger->popHandler();
     unset($_SERVER['SERVER_SOFTWARE']);
@@ -266,7 +266,7 @@ class Google_ClientTest extends BaseTest
 
   public function testSettersGetters()
   {
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setClientId("client1");
     $client->setClientSecret('client1secret');
     $client->setState('1');
@@ -295,7 +295,7 @@ class Google_ClientTest extends BaseTest
     $this->onlyGuzzle5();
 
     $_SERVER['SERVER_SOFTWARE'] = 'Google App Engine';
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
 
     // check Stream Handler is used
     $http = $client->getHttpClient();
@@ -319,7 +319,7 @@ class Google_ClientTest extends BaseTest
     $this->onlyGuzzle5();
 
     $_SERVER['SERVER_SOFTWARE'] = 'Google App Engine';
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
 
     $this->assertEquals(
       '/etc/ca-certificates.crt',
@@ -332,7 +332,7 @@ class Google_ClientTest extends BaseTest
   public function testJsonConfig()
   {
     // Device config
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $device =
     '{"installed":{"auth_uri":"https://accounts.google.com/o/oauth2/auth","client_secret"'.
     ':"N0aHCBT1qX1VAcF5J1pJAn6S","token_uri":"https://accounts.google.com/o/oauth2/token",'.
@@ -346,7 +346,7 @@ class Google_ClientTest extends BaseTest
     $this->assertEquals($client->getRedirectUri(), $dObj['installed']['redirect_uris'][0]);
 
     // Web config
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $web = '{"web":{"auth_uri":"https://accounts.google.com/o/oauth2/auth","client_secret"' .
       ':"lpoubuib8bj-Fmke_YhhyHGgXc","token_uri":"https://accounts.google.com/o/oauth2/token"' .
       ',"client_email":"123456789@developer.gserviceaccount.com","client_x509_cert_url":'.
@@ -363,7 +363,7 @@ class Google_ClientTest extends BaseTest
   public function testIniConfig()
   {
     $config = parse_ini_file($this->testDir . "/config/test.ini");
-    $client = new Google_Client($config);
+    $client = new \GoogleApi\Google_Client($config);
 
     $this->assertEquals('My Test application', $client->getConfig('application_name'));
     $this->assertEquals(
@@ -375,7 +375,7 @@ class Google_ClientTest extends BaseTest
   public function testNoAuth()
   {
     /** @var $noAuth Google_Auth_Simple */
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setDeveloperKey(null);
 
     // unset application credentials
@@ -396,7 +396,7 @@ class Google_ClientTest extends BaseTest
     $this->checkServiceAccountCredentials();
     $credentialsFile = getenv('GOOGLE_APPLICATION_CREDENTIALS');
 
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setAuthConfig($credentialsFile);
 
     $http = new Client();
@@ -412,7 +412,7 @@ class Google_ClientTest extends BaseTest
     $credentialsFile = getenv('GOOGLE_APPLICATION_CREDENTIALS');
 
     $sub = 'sub123';
-    $client = new Google_Client();
+    $client = new \GoogleApi\Google_Client();
     $client->setAuthConfig($credentialsFile);
     $client->setSubject($sub);
 

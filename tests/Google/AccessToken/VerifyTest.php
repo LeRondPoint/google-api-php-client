@@ -30,7 +30,7 @@ class Google_AccessToken_VerifyTest extends BaseTest
   public function testPhpsecConstants()
   {
     $client = $this->getClient();
-    $verify = new Google_AccessToken_Verify($client->getHttpClient());
+    $verify = new \GoogleApi\Google_AccessToken_Verify($client->getHttpClient());
 
     // set these to values that will be changed
     if (defined('MATH_BIGINTEGER_OPENSSL_ENABLED') || defined('CRYPT_RSA_MODE')) {
@@ -70,7 +70,7 @@ class Google_AccessToken_VerifyTest extends BaseTest
     $this->assertEquals(3, count($segments));
     // Extract the client ID in this case as it wont be set on the test client.
     $data = json_decode($jwt->urlSafeB64Decode($segments[1]));
-    $verify = new Google_AccessToken_Verify($http);
+    $verify = new \GoogleApi\Google_AccessToken_Verify($http);
     $payload = $verify->verifyIdToken($token['id_token'], $data->aud);
     $this->assertTrue(isset($payload['sub']));
     $this->assertTrue(strlen($payload['sub']) > 0);
@@ -81,7 +81,7 @@ class Google_AccessToken_VerifyTest extends BaseTest
     $client = $this->getClient();
     $http = $client->getHttpClient();
     $data = json_decode($jwt->urlSafeB64Decode($segments[1]));
-    $verify = new Google_AccessToken_Verify($http);
+    $verify = new \GoogleApi\Google_AccessToken_Verify($http);
     $payload = $verify->verifyIdToken($token['id_token'], $data->aud);
     $this->assertTrue(isset($payload['sub']));
     $this->assertTrue(strlen($payload['sub']) > 0);
@@ -90,12 +90,12 @@ class Google_AccessToken_VerifyTest extends BaseTest
   public function testRetrieveCertsFromLocation()
   {
     $client = $this->getClient();
-    $verify = new Google_AccessToken_Verify($client->getHttpClient());
+    $verify = new \GoogleApi\Google_AccessToken_Verify($client->getHttpClient());
 
     // make this method public for testing purposes
     $method = new ReflectionMethod($verify, 'retrieveCertsFromLocation');
     $method->setAccessible(true);
-    $certs = $method->invoke($verify, Google_AccessToken_Verify::FEDERATED_SIGNON_CERT_URL);
+    $certs = $method->invoke($verify, \GoogleApi\Google_AccessToken_Verify::FEDERATED_SIGNON_CERT_URL);
 
     $this->assertArrayHasKey('keys', $certs);
     $this->assertGreaterThan(1, count($certs['keys']));

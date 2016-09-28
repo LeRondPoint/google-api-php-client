@@ -18,7 +18,7 @@
  * under the License.
  */
 
-class TestModel extends Google_Model
+class TestModel extends \GoogleApi\Google_Model
 {
   public function mapTypes($array)
   {

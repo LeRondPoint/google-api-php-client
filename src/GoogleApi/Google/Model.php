@@ -1,4 +1,4 @@
-<?php
+<?php namespace GoogleApi;
 /*
  * Copyright 2011 Google Inc.
  *
@@ -21,7 +21,7 @@
  * http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5
  *
  */
-class Google_Model implements ArrayAccess
+class Google_Model implements \ArrayAccess
 {
   /**
    * If you need to specify a NULL JSON value, use Google_Model::NULL_VALUE
@@ -129,7 +129,7 @@ class Google_Model implements ArrayAccess
    */
   public function toSimpleObject()
   {
-    $object = new stdClass();
+    $object = new \stdClass();
 
     // Process all other data.
     foreach ($this->modelData as $key => $val) {
@@ -140,8 +140,8 @@ class Google_Model implements ArrayAccess
     }
 
     // Process all public properties.
-    $reflect = new ReflectionObject($this);
-    $props = $reflect->getProperties(ReflectionProperty::IS_PUBLIC);
+    $reflect = new \ReflectionObject($this);
+    $props = $reflect->getProperties(\ReflectionProperty::IS_PUBLIC);
     foreach ($props as $member) {
       $name = $member->getName();
       $result = $this->getSimpleValue($this->$name);

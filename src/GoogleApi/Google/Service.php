@@ -1,4 +1,4 @@
-<?php
+<?php namespace GoogleApi;
 /*
  * Copyright 2010 Google Inc.
  *
@@ -25,7 +25,7 @@ class Google_Service
   public $resource;
   private $client;
 
-  public function __construct(Google_Client $client)
+  public function __construct(\GoogleApi\Google_Client $client)
   {
     $this->client = $client;
   }

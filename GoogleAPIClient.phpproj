@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>GoogleAPIClient</Name>
+    <ProjectGuid>{5e694476-f1fb-49aa-bc3f-646d3e1f3642}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <OutputType>Library</OutputType>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="examples\styles\style.css" />
+    <Compile Include="examples\templates\base.php" />
+    <Compile Include="examples\batch.php" />
+    <Compile Include="examples\idtoken.php" />
+    <Compile Include="examples\index.php" />
+    <Compile Include="examples\large-file-upload.php" />
+    <Compile Include="examples\multi-api.php" />
+    <Compile Include="examples\README.md" />
+    <Compile Include="examples\service-account.php" />
+    <Compile Include="examples\simple-file-upload.php" />
+    <Compile Include="examples\simple-query.php" />
+    <Compile Include="examples\url-shortener.php" />
+    <Compile Include="src\GoogleApi\Google\AccessToken\Revoke.php" />
+    <Compile Include="src\GoogleApi\Google\AccessToken\Verify.php" />
+    <Compile Include="src\GoogleApi\Google\AuthHandler\AuthHandlerFactory.php" />
+    <Compile Include="src\GoogleApi\Google\AuthHandler\Guzzle5AuthHandler.php" />
+    <Compile Include="src\GoogleApi\Google\AuthHandler\Guzzle6AuthHandler.php" />
+    <Compile Include="src\GoogleApi\Google\Http\Batch.php" />
+    <Compile Include="src\GoogleApi\Google\Http\MediaFileUpload.php" />
+    <Compile Include="src\GoogleApi\Google\Http\REST.php" />
+    <Compile Include="src\GoogleApi\Google\Service\Exception.php" />
+    <Compile Include="src\GoogleApi\Google\Service\README.md" />
+    <Compile Include="src\GoogleApi\Google\Service\Resource.php" />
+    <Compile Include="src\GoogleApi\Google\Task\Exception.php" />
+    <Compile Include="src\GoogleApi\Google\Task\Retryable.php" />
+    <Compile Include="src\GoogleApi\Google\Task\Runner.php" />
+    <Compile Include="src\GoogleApi\Google\Utils\UriTemplate.php" />
+    <Compile Include="src\GoogleApi\Google\autoload.php" />
+    <Compile Include="src\GoogleApi\Google\Client.php" />
+    <Compile Include="src\GoogleApi\Google\Collection.php" />
+    <Compile Include="src\GoogleApi\Google\Exception.php" />
+    <Compile Include="src\GoogleApi\Google\Model.php" />
+    <Compile Include="src\GoogleApi\Google\Service.php" />
+    <Compile Include="style\ruleset.xml" />
+    <Compile Include="tests\config\test.ini" />
+    <Compile Include="tests\examples\batchTest.php" />
+    <Compile Include="tests\examples\idTokenTest.php" />
+    <Compile Include="tests\examples\indexTest.php" />
+    <Compile Include="tests\examples\largeFileUploadTest.php" />
+    <Compile Include="tests\examples\multiApiTest.php" />
+    <Compile Include="tests\examples\serviceAccountTest.php" />
+    <Compile Include="tests\examples\simpleFileUploadTest.php" />
+    <Compile Include="tests\examples\simpleQueryTest.php" />
+    <Compile Include="tests\examples\urlShortenerTest.php" />
+    <Compile Include="tests\Google\AccessToken\RevokeTest.php" />
+    <Compile Include="tests\Google\AccessToken\VerifyTest.php" />
+    <Compile Include="tests\Google\Http\BatchTest.php" />
+    <Compile Include="tests\Google\Http\MediaFileUploadTest.php" />
+    <Compile Include="tests\Google\Http\RESTTest.php" />
+    <Compile Include="tests\Google\Service\AdSenseTest.php" />
+    <Compile Include="tests\Google\Service\PagespeedonlineTest.php" />
+    <Compile Include="tests\Google\Service\PlusTest.php" />
+    <Compile Include="tests\Google\Service\ResourceTest.php" />
+    <Compile Include="tests\Google\Service\TasksTest.php" />
+    <Compile Include="tests\Google\Service\UrlshortenerTest.php" />
+    <Compile Include="tests\Google\Service\YouTubeTest.php" />
+    <Compile Include="tests\Google\Task\RunnerTest.php" />
+    <Compile Include="tests\Google\Utils\UriTemplateTest.php" />
+    <Compile Include="tests\Google\ClientTest.php" />
+    <Compile Include="tests\Google\ModelTest.php" />
+    <Compile Include="tests\Google\ServiceTest.php" />
+    <Compile Include="tests\BaseTest.php" />
+    <Compile Include="tests\bootstrap.php" />
+    <Compile Include="tests\clearToken.php" />
+    <Compile Include="tests\README" />
+    <Compile Include=".gitignore" />
+    <Compile Include=".travis.yml" />
+    <Compile Include="composer.json" />
+    <Compile Include="composer.lock" />
+    <Compile Include="CONTRIBUTING.md" />
+    <Compile Include="LICENSE" />
+    <Compile Include="phpunit.xml.dist" />
+    <Compile Include="README.md" />
+    <Compile Include="UPGRADING.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="examples\styles" />
+    <Folder Include="examples\templates" />
+    <Folder Include="examples" />
+    <Folder Include="src\GoogleApi\Google\AccessToken\" />
+    <Folder Include="src\GoogleApi\Google\AuthHandler\" />
+    <Folder Include="src\GoogleApi\Google\Http\" />
+    <Folder Include="src\GoogleApi\Google\" />
+    <Folder Include="src\GoogleApi\Google\Service\" />
+    <Folder Include="src\GoogleApi\Google\Task\" />
+    <Folder Include="src\GoogleApi\Google\Utils\" />
+    <Folder Include="src\GoogleApi\" />
+    <Folder Include="src" />
+    <Folder Include="style" />
+    <Folder Include="tests\config" />
+    <Folder Include="tests\examples" />
+    <Folder Include="tests\Google\AccessToken" />
+    <Folder Include="tests\Google\Http" />
+    <Folder Include="tests\Google\Service" />
+    <Folder Include="tests\Google\Task" />
+    <Folder Include="tests\Google\Utils" />
+    <Folder Include="tests\Google" />
+    <Folder Include="tests" />
+  </ItemGroup>
+</Project>

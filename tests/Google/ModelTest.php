@@ -61,7 +61,7 @@ class Google_ModelTest extends BaseTest
     $this->assertArrayHasKey('date', $obj['start']);
     $this->assertArrayNotHasKey('dateTime', $obj['start']);
     $date = new Google_Service_Calendar_EventDateTime();
-    $date->setDate(Google_Model::NULL_VALUE);
+    $date->setDate(\GoogleApi\Google_Model::NULL_VALUE);
     $event->setStart($date);
     $obj = json_decode(json_encode($event->toSimpleObject()), true);
     $this->assertNull($obj['start']['date']);
@@ -118,13 +118,13 @@ class Google_ModelTest extends BaseTest
 
   public function testJsonStructure()
   {
-    $model = new Google_Model();
+    $model = new \GoogleApi\Google_Model();
     $model->publicA = "This is a string";
-    $model2 = new Google_Model();
+    $model2 = new \GoogleApi\Google_Model();
     $model2->publicC = 12345;
     $model2->publicD = null;
     $model->publicB = $model2;
-    $model3 = new Google_Model();
+    $model3 = new \GoogleApi\Google_Model();
     $model3->publicE = 54321;
     $model3->publicF = null;
     $model->publicG = array($model3, "hello", false);
@@ -146,14 +146,14 @@ class Google_ModelTest extends BaseTest
 
   public function testIssetPropertyOnModel()
   {
-    $model = new Google_Model();
+    $model = new \GoogleApi\Google_Model();
     $model['foo'] = 'bar';
     $this->assertTrue(isset($model->foo));
   }
 
   public function testUnsetPropertyOnModel()
   {
-    $model = new Google_Model();
+    $model = new \GoogleApi\Google_Model();
     $model['foo'] = 'bar';
     unset($model->foo);
     $this->assertFalse(isset($model->foo));
